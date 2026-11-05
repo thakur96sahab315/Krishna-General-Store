@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "krishna-store-v1";
+const CACHE_NAME = "krishna-store-v2";
 
 const FILES_TO_CACHE = [
   "./",
@@ -9,7 +9,7 @@ const FILES_TO_CACHE = [
   "./manifest.webmanifest"
 ];
 
-// Website install और पहली बार खोलने पर cache करें
+// Install
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -20,7 +20,7 @@ self.addEventListener("install", (event) => {
   self.skipWaiting();
 });
 
-// पुराने cache हटाएँ
+// Activate
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -35,7 +35,7 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
-// Network से लोड करें, offline होने पर cache इस्तेमाल करें
+// Fetch
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
@@ -44,10 +44,12 @@ self.addEventListener("fetch", (event) => {
       .then((response) => {
         if (response.ok) {
           const copy = response.clone();
+
           caches.open(CACHE_NAME).then((cache) => {
             cache.put(event.request, copy);
           });
         }
+
         return response;
       })
       .catch(() => caches.match(event.request))

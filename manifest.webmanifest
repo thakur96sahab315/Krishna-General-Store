@@ -1,11 +1,22 @@
-
 {
   "name": "Krishna General Store",
   "short_name": "Krishna Store",
-  "description": "Krishna General Store - Beauty, Bangles and Daily Essentials",
-  "start_url": "./index.html",
+  "description": "Krishna General Store",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#8b5e83"
+  "background_color": "#fffdfb",
+  "theme_color": "#70434d",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }

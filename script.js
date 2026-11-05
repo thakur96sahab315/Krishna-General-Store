@@ -63,3 +63,12 @@ document.getElementById("contactWhatsapp").addEventListener("click",e=>{e.preven
 document.getElementById("menuToggle").addEventListener("click",()=>document.getElementById("nav").classList.toggle("open"));
 document.getElementById("year").textContent=new Date().getFullYear();
 renderProducts();renderCart();
+
+// Register service worker for PWA
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(() => console.log("PWA Service Worker Registered"))
+      .catch(error => console.error("PWA Error:", error));
+  });
+}

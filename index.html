@@ -112,5 +112,18 @@
     <div class="cart-bottom"><div class="total-line"><span>Subtotal</span><b id="cartTotal">₹0</b></div><p class="tiny-note">Final price and availability will be confirmed by the store.</p><button class="btn btn-dark full" id="checkoutBtn">Order on WhatsApp ↗</button></div>
   </aside>
   <script src="script.js"></script>
+  
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("./service-worker.js")
+      .then(() => console.log("Service Worker Registered!"))
+      .catch((error) => console.error("Service Worker Error:", error));
+  });
+}
+</script>
+
+
 </body>
 </html>
